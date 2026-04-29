@@ -17,7 +17,7 @@ if [[ "$choice" =~ [yY] ]]; then
     curl -sSL https://raw.githubusercontent.com/nolaxe/wg_to_easy/main/bender.png -o logo.png
     echo "Копирую в контейнер ${WG_CONTAINER}..."
     docker cp logo.png ${WG_CONTAINER}:/app/www/img/logo.png && echo "logo.png скопирован успешно"
-    rm -f logo.png
+    # rm -f logo.png
     echo "✅ Готово! Контейнер ${WG_CONTAINER} обновлен."
 else
     echo "ℹ️ Отмена."
