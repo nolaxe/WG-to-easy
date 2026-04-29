@@ -36,7 +36,7 @@ get_status
 # 2. Зависимости
 if [ ! -f ".dependencies_done" ]; then
     echo
-    ask "Установить Docker и плагины? [ENTER - OK / Любая клавиша - отмена]: "
+    ask "Установить Docker и зависимости? [ENTER - OK / Любая клавиша - отмена]: "
     IFS= read -n 1 -s REPLY; echo ""
     if [[ -z "$REPLY" ]]; then
         info "Установка зависимостей..."
