@@ -11,7 +11,7 @@ fi
 
 echo "Найден контейнер WG-Easy: $WG_CONTAINER"
 
-read -p "Убрать плашку 'Доступно обновление'+ bender (docker cp app.js ${WG_CONTAINER}:/app/www/js/app.js)? (y/n) " choice
+read -p "Mirax '+ bender (y/n) " choice
 
 if [[ "$choice" =~ [yY] ]]; then
     echo "Загружаю файлы..."
