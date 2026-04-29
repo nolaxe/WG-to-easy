@@ -10,7 +10,7 @@ fi
 
 echo "Найден контейнер WG-Easy: $WG_CONTAINER"
 
-read -p "bender (docker cp app.js ${WG_CONTAINER}:/app/www/img/logo.png)? (y/n) " choice
+read -p "mirax + bender ? (y/n) " choice
 
 if [[ "$choice" =~ [yY] ]]; then
     echo "Загружаю файлы..."
