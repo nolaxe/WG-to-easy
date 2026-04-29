@@ -33,7 +33,7 @@ get_status() {
 clear
 get_status
 
-# 2. Зависимости (Твоя новая логика)
+# 2. Зависимости
 if [ ! -f ".dependencies_done" ]; then
     echo
     ask "Установить Docker и плагины? [ENTER - OK / Любая клавиша - отмена]: "
@@ -65,7 +65,7 @@ if [ "$(docker ps -aq -f name=wg-easy)" ]; then
     fi
 fi
 
-# 4. Настройка портов (здесь оставляем обычный read, чтобы можно было вводить цифры)
+# 4. Настройка портов
 echo
 PORT_VPN_DEF="51820"
 ask "Порт VPN (UDP) [Enter - $PORT_VPN_DEF]: "; read -r input_port_vpn
