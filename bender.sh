@@ -15,9 +15,13 @@ read -p "bender (docker cp app.js ${WG_CONTAINER}:/app/www/img/logo.png)? (y/n) 
 if [[ "$choice" =~ [yY] ]]; then
     echo "Загружаю файлы..."
     curl -sSL https://raw.githubusercontent.com/nolaxe/wg_to_easy/main/addons/bender.png -o bender.png
+    curl -sSL https://raw.githubusercontent.com/nolaxe/wg_to_easy/main/addons/mirax.png -o mirax.png
+    curl -sSL https://raw.githubusercontent.com/nolaxe/wg_to_easy/main/addons/mirax.html -o mirax.html
     echo "Копирую в контейнер ${WG_CONTAINER}..."
-    docker cp bender.png ${WG_CONTAINER}:/app/www/img/logo.png && echo "logo.png скопирован успешно"
-    # rm -f logo.png
+    docker cp bender.png ${WG_CONTAINER}:/app/www/img/logo.png
+    docker cp mirax.png ${WG_CONTAINER}:/app/www/img/mirax.png 
+    docker cp mirax.html ${WG_CONTAINER}:/app/www/index.html    
+
     echo "✅ Готово! Контейнер ${WG_CONTAINER} обновлен."
 else
     echo "ℹ️ Отмена."
