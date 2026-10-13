@@ -30,7 +30,7 @@ get_status() {
 }
 
 # --- НАЧАЛО ВЫПОЛНЕНИЯ ---
-clear
+# clear
 get_status
 
 # 2. Зависимости
@@ -103,7 +103,7 @@ docker run -d \
   ghcr.io/wg-easy/wg-easy:14 > /dev/null
 
 sleep 2
-clear
+# clear
 get_status
 # 7. Финальный вопрос: Очистка образов
 echo
