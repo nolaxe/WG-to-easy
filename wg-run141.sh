@@ -81,7 +81,7 @@ ask "Пароль для веб интерфейса wg [Enter - сгенери�
 read -rs password
 echo ""
 if [ -z "$password" ]; then
-    password=$(tr -dc 'A-Za-z0-9' < /dev/urandom | head -c 12)
+    password=$(tr -dc 'A-Za-z0-9' < /dev/urandom | head -c 6)
     echo -e "${GREEN}*** Сгенерирован случайный пароль: ${YELLOW}$password${GREEN} ***${NC}"
 else
     echo -e "${GREEN}*** принято ***${NC}"
