@@ -96,7 +96,7 @@ docker run -d \
   -e WG_HOST=$(curl -s ifconfig.me || echo "YOUR_EXTERNAL_IP") \
   -e PASSWORD_HASH="$hash" \
   -p ${PORT_VPN}:51820/udp \
-  -p ${PORT_WEB}:51821/tcp \  
+  -p ${PORT_WEB}:51821/tcp \
   --cap-add=NET_ADMIN \
   --sysctl="net.ipv4.ip_forward=1" \
   --restart unless-stopped \
