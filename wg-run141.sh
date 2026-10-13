@@ -77,9 +77,16 @@ PORT_WEB=${input_port_web:-$PORT_WEB_DEF}
 
 # 5. Пароль
 echo
-ask "Пароль для веб интерфейса wg: "
+ask "Пароль для веб интерфейса wg [Enter - сгенерировать случайный]:"
 read -rs password
-echo -e "${GREEN}*** принято ***${NC}"
+echo ""
+if [ -z "$password" ]; then
+    password=$(tr -dc 'A-Za-z0-9' < /dev/urandom | head -c 12)
+    echo -e "${GREEN}*** Сгенерирован случайный пароль: ${YELLOW}$password${GREEN} ***${NC}"
+else
+    echo -e "${GREEN}*** принято ***${NC}"
+fi
+
 
 # 6. Установка
 info "Генерация хеша..."
