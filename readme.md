@@ -1,9 +1,9 @@
 ### WG fast install
 
 
-- RUN wg 141
+- RUN wg 143
 ```
-bash <(curl -s "https://raw.githubusercontent.com/nolaxe/wg-to-easy/main/wg-run141.sh")
+bash <(curl -s "https://raw.githubusercontent.com/nolaxe/wg-to-easy/main/wg-run143.sh")
 ```
 <img width="693" height="386" alt="image" src="https://github.com/user-attachments/assets/2a45353f-f3d1-422a-a3de-8391b21f102a" />
 
