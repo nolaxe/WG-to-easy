@@ -9,7 +9,7 @@ err()   { echo -e "${RED}[ERROR]${NC} $*"; }; ask()   { echo -ne "${YELLOW}[?]${
 get_status() {
     echo -e "\e[1;34m----------------------------------------------------------\e[0m"
     echo -e "\e[1;32m🐳 DOCKER DASHBOARD & STATUS\e[0m"
-    echo -e "\e[1;34m---------------------------------------------------------- 142\e[0m"
+    echo -e "\e[1;34m----------------------------------------------------------\e[0m"
 
     echo -e "\n\e[1;33m[ Статус WireGuard ]\e[0m"
     if [ "$(docker ps -aq -f name=wg-easy)" ]; then
@@ -30,7 +30,7 @@ get_status() {
 }
 
 # --- НАЧАЛО ВЫПОЛНЕНИЯ ---
-clear
+# clear
 get_status
 
 # 2. Зависимости
@@ -77,9 +77,16 @@ PORT_WEB=${input_port_web:-$PORT_WEB_DEF}
 
 # 5. Пароль
 echo
-ask "Пароль для веб интерфейса wg: "
+ask "Пароль для веб интерфейса wg [Enter - сгенерировать случайный]:"
 read -rs password
-echo -e "${GREEN}*** принято ***${NC}"
+echo ""
+if [ -z "$password" ]; then
+    password=$(tr -dc 'A-Za-z0-9' < /dev/urandom | head -c 6)
+    echo -e "${GREEN}*** Сгенерирован случайный пароль: ${YELLOW}$password${GREEN} ***${NC}"
+else
+    echo -e "${GREEN}*** принято ***${NC}"
+fi
+
 
 # 6. Установка
 info "Генерация хеша..."
@@ -95,20 +102,16 @@ docker run -d \
   --name=wg-easy \
   -e WG_HOST=$(curl -s ifconfig.me || echo "YOUR_EXTERNAL_IP") \
   -e PASSWORD_HASH="$hash" \
-  
- # -p ${PORT_VPN}:${PORT_VPN}/udp \
- # -p ${PORT_WEB}:${PORT_WEB}/tcp \
-
+  -v /root/.wg-easy:/etc/wireguard
   -p ${PORT_VPN}:51820/udp \
   -p ${PORT_WEB}:51821/tcp \
-  
   --cap-add=NET_ADMIN \
   --sysctl="net.ipv4.ip_forward=1" \
   --restart unless-stopped \
   ghcr.io/wg-easy/wg-easy:14 > /dev/null
 
 sleep 2
-clear
+# clear
 get_status
 # 7. Финальный вопрос: Очистка образов
 echo
