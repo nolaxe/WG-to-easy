@@ -102,7 +102,7 @@ docker run -d \
   --name=wg-easy \
   -e WG_HOST=$(curl -s ifconfig.me || echo "YOUR_EXTERNAL_IP") \
   -e PASSWORD_HASH="$hash" \
-  -v /root/.wg-easy:/etc/wireguard
+  -v /root/.wg-easy:/etc/wireguard \
   -p ${PORT_VPN}:51820/udp \
   -p ${PORT_WEB}:51821/tcp \
   --cap-add=NET_ADMIN \
