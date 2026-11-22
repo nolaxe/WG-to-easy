@@ -49,6 +49,7 @@ docker run -d \
   --name=wg-easy \
   -e WG_HOST="$WG_HOST" \
   -e PASSWORD_HASH="$new_hash" \
+  -v /root/.wg-easy:/etc/wireguard \
   $PORT_ARGS \
   --cap-add=NET_ADMIN \
   --sysctl="net.ipv4.ip_forward=1" \
